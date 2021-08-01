@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'RecruitmentWeb',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'zh-CN'
     },
     meta: [
       { charset: 'utf-8' },
