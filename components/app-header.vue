@@ -4,11 +4,16 @@
       <div class="header-inner">
         <div class="left-col">
           <ul class="nav nav-quick clearfix animated">
-            <li v-for="navigationLink in leftLinks" :key="navigationLink.id">
-              <nuxt-link :to="navigationLink.menuLink">{{
-                navigationLink.menuName
-              }}</nuxt-link>
+            <li>
+              <nuxt-link to="/">首页</nuxt-link>
             </li>
+            <template v-if="navType !== 'simple'">
+              <li v-for="navigationLink in leftLinks" :key="navigationLink.id">
+                <nuxt-link :to="navigationLink.menuLink">{{
+                  navigationLink.menuName
+                }}</nuxt-link>
+              </li>
+            </template>
           </ul>
         </div>
         <div class="right-col">
@@ -28,33 +33,34 @@
 <script>
 export default {
   name: 'AppHeader',
+  props: {
+    navType: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
       leftLinks: [
         {
           id: '1',
-          menuName: '首页',
-          menuLink: '/'
-        },
-        {
-          id: '2',
           menuName: '职位',
           menuLink: '/job'
         },
         {
-          id: '3',
+          id: '2',
           menuName: '公司',
           menuLink: '/company'
         },
         {
-          id: '4',
+          id: '3',
           menuName: '资讯',
           menuLink: '/news'
         }
       ],
       rightLinks: [
         {
-          id: '1',
+          id: '4',
           menuName: '注册',
           menuLink: '/register'
         },
